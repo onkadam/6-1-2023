@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD - create,read,update,delete</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <form width="50%">
+      <input
+        name="name"
+        type="text"
+        autocomplete="off"
+        placeholder="Enter your name"
+      />
+      <input
+        name="surname"
+        type="text"
+        autocomplete="off"
+        placeholder="Enter your surname"
+      />
+      <input
+        name="address"
+        type="text"
+        autocomplete="off"
+        placeholder="Enter your address"
+      />
+      <input type="button" value="save" onclick="onkar(onkar)" />
+    </form>
+    <hr />
+    <table border="1" id="mytable" width="40%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Address</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody style="background-color:cornflowerblue; text-align: center;">
+        <tr>
+          <td>a</td>
+          <td>b</td>
+          <td>c</td>
+          <td class="btn">
+            <button>View</button>
+            <button>Edit</button>
+            <button>Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      let n = document.querySelector('input[name="name"]');
+      let sn = document.querySelector('input[name="surname"]');
+      let addr = document.querySelector('input[name="address"]');
+
+      let tbdy = document.querySelector("table#mytable tbody");
+
+      let onkar = (e) => {
+        e.preventDefault;
+        console.log(n.value);
+        console.log(sn.value);
+        console.log(addr.value);
+        console.log(tbdy);
+        tbdy.innerHTML += `<tr>
+            <td>${n.value}</td>
+            <td>${sn.value}</td>
+            <td>${addr.value}</td><td>
+            <button>View</button>
+            <button>Edit</button>
+            <button onclick="delele(this)">Delete</button></td></tr>`; //Append tecnique
+        n.value = sn.value = addr.value = "";
+      };
+
+      let delele = (z) => {
+        console.log(z.closest("tr"));
+
+        if (confirm("Go to delete") == true) {
+          z.closest("tr").remove();
+        } else {
+          alert("Go back & store");
+        }
+      };
+    </script>
+  </body>
+</html>
